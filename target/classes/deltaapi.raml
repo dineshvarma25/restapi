@@ -1,0 +1,30 @@
+#%RAML 1.0
+version: 1.0.0
+baseUri: https://anypoint.mulesoft.com/mocking/api/v1/links/e7efd0c4-b456-40a7-8d13-ac31a86b41e5/ # 
+title: deltaapi
+/deltaFlights:
+  get:
+    description: This resouce get all the flights details from dela airlines 
+    responses: 
+      200: 
+        body: 
+          application/json: 
+             example: !include examples/listAllDeltaFlights-get-response.json
+    
+  post:
+     body: 
+      application/json: 
+          schema: !include schemas/addDeltaFlight-post-request-schema.json
+          example: !include examples/addDeltaFlight-post-request.json
+     responses: 
+        201: 
+          body: 
+            application/json:      
+               example: !include examples/addDeltaFlight-post-response.json 
+  /{destination}:
+    get:
+      responses: 
+        200: 
+          body: 
+            application/json:   
+              example: !include examples/deltaFlightsByDestination-get-response.json
